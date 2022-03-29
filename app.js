@@ -13,6 +13,8 @@ const main = require("./src/routers/main");
 const users = require("./src/routers/users");
 const products = require("./src/routers/products");
 const admin = require("./src/routers/admin")
+const apiUsers = require("./src/routers/APIusers/users")
+
 //
 
 //Tenemos a mano la ejecución de express 🎁
@@ -43,6 +45,8 @@ app.use("/",main);
 app.use('/', users);
 app.use('/products', products);
 app.use('/admin', admin);
+app.use('/api', apiUsers);
+
 //=======================================================================================
 
 //Va al final de todo para que no capture peticiónes que de verdad no existen 😐
