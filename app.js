@@ -14,7 +14,7 @@ const users = require("./src/routers/users");
 const products = require("./src/routers/products");
 const admin = require("./src/routers/admin")
 const apiUsers = require("./src/routers/APIusers/users")
-
+const apiProducts = require("./src/routers/APIproducts/products")
 //
 
 //Tenemos a mano la ejecución de express 🎁
@@ -46,6 +46,7 @@ app.use('/', users);
 app.use('/products', products);
 app.use('/admin', admin);
 app.use('/api', apiUsers);
+app.use('/api', apiProducts);
 
 //=======================================================================================
 
