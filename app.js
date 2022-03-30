@@ -13,8 +13,9 @@ const main = require("./src/routers/main");
 const users = require("./src/routers/users");
 const products = require("./src/routers/products");
 const admin = require("./src/routers/admin")
-const apiUsers = require("./src/routers/APIusers/users")
-const apiProducts = require("./src/routers/APIproducts/products")
+const apiUsers = require("./src/routers/api/users")
+const apiProducts = require("./src/routers/api/products")
+//
 //
 
 //Tenemos a mano la ejecución de express 🎁
@@ -45,9 +46,8 @@ app.use("/",main);
 app.use('/', users);
 app.use('/products', products);
 app.use('/admin', admin);
-app.use('/api', apiUsers);
-app.use('/api', apiProducts);
-
+app.use('/api', apiUsers)
+app.use('/api', apiProducts)
 //=======================================================================================
 
 //Va al final de todo para que no capture peticiónes que de verdad no existen 😐

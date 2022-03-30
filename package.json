@@ -1,7 +1,7 @@
 {
   "name": "grupo_7_sprint_6",
   "version": "1.0.0",
-  "description": "Credenciales\r <hr>\r Usuario normal:",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
