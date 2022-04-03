@@ -12,7 +12,7 @@
         <% if (locals.cantidadTotal) { %>
             <div class="contenedorPaginado">
                 <div class="contenedorEnlaces">
-                    <% for( let i = 1; i <= (cantidadTotal.length/6); i++ ) { %>
+                    <% for( let i = 1; i <= Math.round((cantidadTotal.length/6)); i++ ) { %>
                         <a><%= i %> </a>
                     <% } %>
                     

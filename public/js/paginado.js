@@ -4,6 +4,6 @@ let palabraBuscada = new URLSearchParams(location.search)
 let contador = 1;
 for(let unEnlace of enlaces)
 {
-    unEnlace.setAttribute("href", ('?busqueda='+ palabraBuscada.get("busqueda") +'&pagina='+contador));
+    unEnlace.setAttribute("href", ('?category=' + palabraBuscada.get("category") + '&busqueda='+ palabraBuscada.get("busqueda") +'&pagina='+contador));
     contador++;
 }

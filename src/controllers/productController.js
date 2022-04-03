@@ -31,14 +31,18 @@ const productController = {
 
     search:(req,res)=>{
         let productos;
+        let cantidadTotal; //es para el paginado, para poder dividir en páginas
 
         if(req.query.category == "")
-        {productos = db.product.findAll({
+        {
+            console.log("-------------------------------------------")
+            console.log("entre vieja")
+            productos = db.product.findAll({
             where: {
                 
                 [Op.and]: [
                     {
-                        name: {[Op.like]: req.query.busqueda + "%"}
+                        name: {[Op.like]: "%" + req.query.busqueda + "%"}
                     },
                     {
                         deleted: 0
@@ -48,20 +52,39 @@ const productController = {
             include: [{association: "images"}],
             limit: 6,
             offset: (req.query.pagina ? (req.query.pagina-1)*6 : 0)
-        })}
+        })
+    
+        cantidadTotal = db.product.findAll({
+            where: {
+                [Op.and]: [
+                    {
+                        name: {[Op.like]: "%" + req.query.busqueda + "%"}
+                    },
+                    {
+                        deleted: 0
+                    }/*,
+                    {
+
+                        //category_id: req.query.category ? Number(req.query.category) : ""
+                    }*/
+                ]
+            },
+            include: [{association: "images"}],
+        })
+    }
         else{
             productos = db.product.findAll({
                 where: {
                     
                     [Op.and]: [
                         {
-                            name: {[Op.like]: req.query.busqueda + "%"}
+                            name: {[Op.like]: "%" + req.query.busqueda + "%"}
                         },
                         {
                             deleted: 0
                         },
                         {
-                            category_id: req.query.category
+                            category_id: Number(req.query.category)
                         }
                     ]
                 },
@@ -69,20 +92,26 @@ const productController = {
                 limit: 6,
                 offset: (req.query.pagina ? (req.query.pagina-1)*6 : 0)
             })
+
+            cantidadTotal = db.product.findAll({
+                where: {
+                    [Op.and]: [
+                        {
+                            name: {[Op.like]: "%" + req.query.busqueda + "%"}
+                        },
+                        {
+                            deleted: 0
+                        },
+                        {
+    
+                            category_id: Number(req.query.category)
+                        }
+                    ]
+                },
+                include: [{association: "images"}],
+            })
         }
-        let cantidadTotal = db.product.findAll({
-            where: {
-                [Op.and]: [
-                    {
-                        name: {[Op.like]: req.query.busqueda + "%"}
-                    },
-                    {
-                        deleted: 0
-                    }
-                ]
-            },
-            include: [{association: "images"}],
-        })
+       
 
         Promise.all([productos, cantidadTotal, categories])
         .then(function([productos, cantidadTotal, categories])
