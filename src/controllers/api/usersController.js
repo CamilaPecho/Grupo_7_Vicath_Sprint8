@@ -25,7 +25,7 @@ const userController = {
             let estructura = {
                 count: userResponse.count,
                 users: arrayUser,
-                previous: pagina > 1 && pagina < (userResponse.count/5)? '/api/users/?page='+(pagina-1) : null,
+                previous: pagina > 1 ? '/api/users/?page='+(pagina-1) : null,
                 next: pagina < (userResponse.count/5) ? '/api/users/?page='+(pagina+1) : null
             }
 

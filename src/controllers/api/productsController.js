@@ -52,7 +52,7 @@ const productsController = {
                     countTotalCategories: arrayCategorias.length,
                     countByCategory: arrayCategorias,
                     products: arrayProducts,
-                    previous: pagina > 1 && pagina < (productosResponse.count/5)? '/api/products/?page='+(pagina-1) : null,
+                    previous: pagina > 1 ? '/api/products/?page='+(pagina-1) : null,
                     next: pagina < (productosResponse.count/5) ? '/api/products/?page='+(pagina+1) : null
                     }
                 
