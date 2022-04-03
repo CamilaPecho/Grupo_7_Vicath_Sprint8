@@ -3,6 +3,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const cookies = require('cookie-parser');
+const cors = require('cors')
 
 //Solicitud de middlewares
 const usuarioLogeadoGlobal = require('./src/middlewares/usuarioLogeadoGlobal.js')
@@ -20,6 +21,9 @@ const apiProducts = require("./src/routers/api/products")
 
 //Tenemos a mano la ejecución de express 🎁
 const app = express();
+
+//Cors
+app.use(cors())
 
 //Middlewares de aplicación global
 app.use(session({
