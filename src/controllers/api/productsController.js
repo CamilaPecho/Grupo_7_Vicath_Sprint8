@@ -1,8 +1,5 @@
 const db = require('../../database/models');
 const { Op } = require("sequelize");
-const moment = require("moment")
-const {validationResult} = require('express-validator');
-const bcript = require('bcryptjs');
 
 const productsController = {
     products: (req, res) => {
@@ -19,33 +16,28 @@ const productsController = {
             limit: 5,
             offset: (pagina ? (pagina-1)*5 : 0)
         })
-        .then(function(userResponse)
+        .then(function(productosResponse)
         {
-            delete userResponse.rows.category
-            delete userResponse.rows.images
-            //return res.json(userResponse)
             db.category.findAll({
                 include: [
                     {association: "products"}
                 ]
             })
-            .then(function(categoria)
+            .then(function(categorias)
             {
-                //return res.json(categoria)
                 let arrayCategorias = []
-                let objetoCategoria = {}
-                categoria.forEach(element => {
+
+                for (const categoria of categorias) {
                     let estructuraCategoria = {
-                        name: element.dataValues.name,
-                        length: element.dataValues.products.length
+                        name: categoria.name,
+                        length: categoria.products.length
                     }
-                  //objetoCategoria[(element.dataValues.name)] = element.dataValues.products.length
-                  arrayCategorias.push(estructuraCategoria)
-                });
+                    arrayCategorias.push(estructuraCategoria)
+                }
 
                 let arrayProducts = []
 
-                userResponse.rows.forEach(element => {
+                productosResponse.rows.forEach(element => {
                     let objetoProduct = {
                         id: element.dataValues.id,
                         name: element.dataValues.name,
@@ -56,12 +48,12 @@ const productsController = {
                 });
                 
                 let estructura = {
-                    count: userResponse.count,
+                    count: productosResponse.count,
                     countTotalCategories: arrayCategorias.length,
                     countByCategory: arrayCategorias,
                     products: arrayProducts,
-                    previous: pagina > 1 && pagina < (userResponse.count/5)? '/api/products/?page='+(pagina-1) : null,
-                    next: pagina < (userResponse.count/5) ? '/api/products/?page='+(pagina+1) : null
+                    previous: pagina > 1 && pagina < (productosResponse.count/5)? '/api/products/?page='+(pagina-1) : null,
+                    next: pagina < (productosResponse.count/5) ? '/api/products/?page='+(pagina+1) : null
                     }
                 
     
