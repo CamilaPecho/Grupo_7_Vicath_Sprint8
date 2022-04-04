@@ -12,7 +12,9 @@ const adminController = {
         .then(function(user)
         {
             //return res.send(path.resolve(__dirname, '../../public/images/users', user.avatar))
+            /*
             fs.unlinkSync(path.resolve(__dirname, '../../public/images/users', user.avatar));
+            */
 
             db.user.destroy({
                 where: {
