@@ -11,6 +11,10 @@ const productsController = {
                 {association: "category"},
                 {association: "images"}
             ],
+            where:
+            {
+                deleted: 0
+            },
             attributes: ['id', 'name', 'description'],
             distinct: true,
             limit: 5,
@@ -67,7 +71,11 @@ const productsController = {
         db.product.findAll({
             include: [
                 {association: "images"}
-            ]
+            ], 
+            where:
+            {
+                deleted: 0
+            }
         })
         .then(function(products)
         {
@@ -107,7 +115,15 @@ const productsController = {
         db.product.findAll(
             {
                 where: {
-                    name: {[Op.like]: "%" + req.query.word + "%"}
+                
+                    [Op.and]: [
+                        {
+                            name: {[Op.like]: "%" + req.query.word + "%"}
+                        },
+                        {
+                            deleted: 0
+                        }
+                    ]
                 },
                 include: [
                     {association: "images"}
