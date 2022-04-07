@@ -84,11 +84,17 @@ div.burger-menu{
     width: 100%;
     display: flex;
     padding-left: 11%;
-    height: 640px;
+    height: 0;
     align-items: center;
     
     transition: all 1s ease;
 }
+
+.menuDeOpciones.active{
+    height: 640px;
+    overflow: hidden;
+}
+
 
 .menuDeOpciones.active{
     height: 0;

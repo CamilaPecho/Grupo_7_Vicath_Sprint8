@@ -64,7 +64,7 @@
                 </div> 
             <% } %>
             <div >
-                <input class="dato" type="text" name="nombre" id="nombre" minlength="2" placeholder="Nombre actual: <%= locals.usuarioDatos? usuarioDatos.first_name:null %>" > 
+                <input class="dato" type="text" name="nombre" id="nombre" minlength="2" value="<%= locals.usuarioDatos? usuarioDatos.first_name:null %>" > 
                 <div class="text-danger" id="nameError"></div>
             </div>
             <% if (locals.errors && errors.nombre) { %>
@@ -73,7 +73,7 @@
                 </div> 
             <% } %>
             <div >
-                <input class="dato"type="text" name="apellido" id="apellido" minlength="2" placeholder="Apellido actual: <%= locals.usuarioDatos? usuarioDatos.last_name:null %>" >  
+                <input class="dato"type="text" name="apellido" id="apellido" minlength="2" value="<%= locals.usuarioDatos? usuarioDatos.last_name:null %>" >  
                 <div class="text-danger" id="lastNameError"></div>
             </div>
             <% if (locals.errors && errors.apellido) { %>
@@ -82,7 +82,7 @@
                 </div> 
             <% } %>
             <div>
-                <input class="dato"type="text" name="telefono" id="telefono" minlength="10" placeholder="Telefono movil actual: <%= locals.usuarioDatos? usuarioDatos.phone_number:null %>" > 
+                <input class="dato"type="text" name="telefono" id="telefono" minlength="10" value="<%= locals.usuarioDatos? usuarioDatos.phone_number:null %>" > 
                 <div class="text-danger" id="phoneNumberError"></div>
             </div>
             <% if (locals.errors && errors.telefono) { %>
