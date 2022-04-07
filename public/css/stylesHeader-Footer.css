@@ -83,6 +83,7 @@ div.burger-menu{
     z-index: 3;
     width: 100%;
     display: flex;
+    overflow: hidden;
     padding-left: 11%;
     height: 0;
     align-items: center;
@@ -92,12 +93,6 @@ div.burger-menu{
 
 .menuDeOpciones.active{
     height: 640px;
-    overflow: hidden;
-}
-
-
-.menuDeOpciones.active{
-    height: 0;
     overflow: hidden;
 }
 

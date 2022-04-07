@@ -56,7 +56,8 @@
             <h3>Editá tus datos</h3>
             <h4> <i class="fas fa-user-circle"></i> Datos Personales<br></h4>
             <div >
-                <input class="dato" type="file" name="avatar" id="avatar" > 
+                <label>Cargar avatar nuevo</label> </vr>
+                <input type="file" name="avatar" id="avatar" > 
             </div>
             <% if (locals.errors && errors.avatar) { %>
                 <div class="errorValidacion">
@@ -64,6 +65,7 @@
                 </div> 
             <% } %>
             <div >
+                <label>Nombre:</label>
                 <input class="dato" type="text" name="nombre" id="nombre" minlength="2" value="<%= locals.usuarioDatos? usuarioDatos.first_name:null %>" > 
                 <div class="text-danger" id="nameError"></div>
             </div>
@@ -73,6 +75,7 @@
                 </div> 
             <% } %>
             <div >
+                <label>Apellido:</label>
                 <input class="dato"type="text" name="apellido" id="apellido" minlength="2" value="<%= locals.usuarioDatos? usuarioDatos.last_name:null %>" >  
                 <div class="text-danger" id="lastNameError"></div>
             </div>
@@ -82,6 +85,7 @@
                 </div> 
             <% } %>
             <div>
+                <label>Teléfono:</label>
                 <input class="dato"type="text" name="telefono" id="telefono" minlength="10" value="<%= locals.usuarioDatos? usuarioDatos.phone_number:null %>" > 
                 <div class="text-danger" id="phoneNumberError"></div>
             </div>

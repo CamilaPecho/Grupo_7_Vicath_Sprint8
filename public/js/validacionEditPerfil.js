@@ -75,13 +75,6 @@ formularioEditPerfil.addEventListener("submit", function(event)
     }
 })
 
-//Para quitar el error general
-let body = document.querySelector("body")
-body.addEventListener("click", function()
-{
-    erroresGeneralFormulario.classList.remove("errores-general")
-    erroresGeneralFormulario.classList.add("errores-general-off")
-})
 
 //Funciones de validacion papaaa 🐔
 
