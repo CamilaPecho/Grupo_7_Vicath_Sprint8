@@ -12,7 +12,9 @@ const adminController = {
         .then(function(user)
         {
             //return res.send(path.resolve(__dirname, '../../public/images/users', user.avatar))
+            /*
             fs.unlinkSync(path.resolve(__dirname, '../../public/images/users', user.avatar));
+            */
 
             db.user.destroy({
                 where: {
@@ -85,7 +87,7 @@ const adminController = {
                         phone_number: req.body.telefono,
                         email: req.body.email,
                         password: contraseñaEncriptada,
-                        rol_id:req.body.rol
+                        rol_id:req.body.rol ? req.body.rol : 1
                     })
                     .then(res.redirect("/admin/users"))
                     .catch(error => res.send (error))

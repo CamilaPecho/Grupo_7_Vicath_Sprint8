@@ -523,9 +523,11 @@ const productController = {
         })
         .then(function(product)
         {
-            for (let i = 0; i < product.images.length; i++) {
+
+            /*for (let i = 0; i < product.images.length; i++) {
+                
                 fs.unlinkSync(path.resolve(__dirname, '../../public/images/', product.images[i].name));
-            }
+            }*/
             
             db.product.update({
                 deleted: 1,
